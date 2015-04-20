@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>operation.html</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+  </head>
+  
+  <body>
+    <script type="text/javascript">
+    	var obj = {
+    		valueOf : function(){
+    			return 2;
+    		}
+    	};
+    	document.writeln(obj.valueOf());
+		document.writeln(obj--);
+		document.writeln(obj);    
+		obj=-obj;
+		document.writeln(obj); 
+		
+		document.write("<br>");
+		document.write("<br>=====位操作=====<br>");
+		document.write("<br>=====按位非NOT=====<br>");
+		var num1 = 25;
+		document.writeln(~num1);
+		document.write("<br>=====按位与AND=====<br>");
+		document.writeln(25&3);
+		document.write("<br>=====按位或OR=====<br>");
+		document.writeln(25|3);
+		document.write("<br>=====按位异或XOR=====<br>");
+		//相同为0不同为1
+		document.writeln(25^3);
+		document.write("<br>=====左移=====<br>");
+		document.writeln(2<<5);
+		//左移不会影响操作数的符号
+		document.writeln(-2<<5);
+		document.write("<br>=====有符号右移=====<br>");
+		document.writeln(64>>5);
+		document.write("<br>=====无符号右移=====<br>");
+		document.writeln(-64>>>5);
+		
+		document.write("<br>=====求余=====<br>");
+		document.writeln(26%5);
+		
+		document.write("<br>=====加=====<br>");
+		document.writeln(5+10);
+		document.writeln(5+"10");
+		document.write("<br>");
+		document.writeln("5 plus 10 is "+(5+10));
+		
+		document.write("<br>=====关系运算=====<br>");
+		document.writeln("23"<"3");//两个都是字符串时，比较的是字符编码
+		document.writeln("23"<3);//其中一个是数字，会把字符转换成为数字比较
+		document.writeln(NaN<3);//任何数和NaN比较，都是false
+		document.writeln(false<true);
+		
+		document.write("<br>");
+		document.writeln("55"==55);
+		document.writeln("55"===55);//全等，数据类型也必须一样
+		document.writeln("55"!==55);
+		
+    </script>
+  </body>
+</html>

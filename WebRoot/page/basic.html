@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>basic.html</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	
+  </head>
+  
+  <body>
+    <script type="text/javascript" >
+	var a=1,b=2,c=3;//使用一条语句定义多个变量
+	//5种简单数据类型：Undefined，Null，Boolean，Number，String
+	//1种复杂数据类型：Object
+	
+	//typeof
+	document.write("=====typeof=====<br>");
+	var s = "hello";
+	document.writeln(typeof s);
+	document.writeln(typeof (s));
+	document.writeln(typeof 99);
+	document.writeln(typeof true);
+	document.writeln(typeof abc);
+	document.write("<br>");
+	var z;
+	document.writeln(typeof z);//undefined
+	z=null;
+	document.writeln(typeof z);//Object
+	document.write("<br>");
+	document.writeln(null == undefined);//true   undefined值是派生自null值的
+	document.write("<br>=====Boolean()=====<br>");
+	//Boolean类型
+	//所有类型的值都与Boolean类型对应的值，可以使用转换函数Boolean()
+	document.writeln(Boolean(s));
+	document.writeln(Boolean(""));
+	document.write("<br>");
+	document.writeln(Boolean(123));
+	document.writeln(Boolean(0));
+	document.writeln(Boolean(NaN));
+	document.write("<br>");
+	document.writeln(Boolean(undefined));
+	document.writeln(Boolean(null));
+	document.write("<br>");
+	var obj = new Object();
+	document.writeln(Boolean(obj));
+	obj=null;
+	document.write(Boolean(obj));
+	//Number
+	document.write("<br>=====Number=====<br>");
+	var octalNum = 070;//8进制以0开头
+	var hexNum = 0xA;//16进制以0x开头
+	
+	var floatNum = 1245000000000000000;
+	var floatNum2 = 0.0000001245;
+	document.writeln(floatNum);
+	document.writeln(floatNum2);//默认会转换6个0以上的小数为e表示法
+	
+	document.write("<br>");
+	var f1=0.1,f2=0.2;
+	document.writeln(f1+f2);//浮点数运算的不精确
+	document.write("<br>");
+	document.writeln(Number.MAX_VALUE);
+	document.writeln(Number.MIN_VALUE);
+	document.write("<br>");
+	var result = Number.MAX_VALUE+Number.MAX_VALUE;
+	document.writeln(isFinite(result));//isFinite判断数值是不是有穷的
+	document.writeln(Number.POSITIVE_INFINITY);
+	document.writeln(Number.NEGATIVE_INFINITY);
+	document.write("<br>");
+	//NaN
+	document.writeln(NaN==NaN);
+	//isNaN
+	document.writeln(isNaN("10"));
+	document.writeln(isNaN("blue"));
+	document.writeln(isNaN(true));
+	document.writeln(10/0);
+	document.write("<br>=====数值转换=====<br>");
+	document.write("<br>=====Number()=====<br>");
+	//Number()
+	document.writeln(Number(true));
+	document.writeln(Number(false));
+	document.write("<br>");
+	document.writeln(Number(null));
+	document.writeln(Number(undefined));
+	document.write("<br>");
+	document.writeln(Number("123"));
+	document.writeln(Number("0088"));
+	document.writeln(Number("0xf"));
+	document.writeln(Number("1.11"));
+	document.writeln(Number(""));
+	document.write("<br>");
+	var obj2 = new Object();
+	obj2.valueOf=function(){
+		return "555";
+	}
+	obj2.valueOf=null;
+	obj2.toString = function(){
+		return "666";
+	}
+	//会先调用对象的valueOf方法，如果转换结果为NaN，调用toString方法
+	document.writeln(Number(obj2));
+	
+	document.write("<br>=====parseInt()=====<br>");
+	document.writeln(parseInt("123blue"));
+	document.writeln(parseInt(""));
+	document.writeln(parseInt("22.5"));
+	document.writeln(parseInt("070"));
+	document.writeln(parseInt("0xe"));
+	document.write("<br>");
+	//指定第二个参数，转换时使用多少进制
+	document.writeln(parseInt("10",2));
+	document.writeln(parseInt("74",8));
+	document.writeln(parseInt("ef",16));
+	
+	document.write("<br>=====parseFloat()=====<br>");
+	document.writeln(parseFloat("3.125e7"));
+	document.writeln(parseFloat("3.125e-6"));
+	
+	document.write("<br>=====String=====<br>");
+	var s1 = "He said:\'hi\'";
+	document.writeln(s1);
+	document.writeln(s1.length);
+	
+	document.write("<br>");
+	document.writeln(true.toString());
+	document.write("<br>");
+	//按照不同的进制输出
+	var num = 10;
+	document.writeln(num.toString());
+	document.writeln(num.toString(2));
+	document.writeln(num.toString(8));
+	document.writeln(num.toString(16));
+	num = -18;
+	document.writeln(num.toString(2));//-10010 
+	
+	document.write("<br>");
+	document.writeln(String(null));
+	document.writeln(String(undefined));
+	
+	</script>
+  </body>
+</html>
