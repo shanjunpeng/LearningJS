@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>statement.html</title>
+
+
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<script type="text/javascript">
+	window.onload = function() {
+		testLabelStatement();
+		testForinStatement();
+	}
+
+	//循环Object中的属性
+	function testForinStatement(){
+		var obj = {
+			name:"sjp",
+			age:25,
+			gender:"male",
+			getName:function(){
+				return this.name;
+			}
+		};
+		for(var attribute in obj){
+			alert(attribute+":"+obj[attribute]);
+		}
+		alert(obj.getName());
+	}
+
+	function testLabelStatement() {
+		var num = 0;
+		outermost: for ( var i = 0; i < 10; i++) {
+			for ( var j = 0; j < 10; j++) {
+				if (i == 2 && j == 2) {
+					break outermost;//直接跳出到最外层标签处
+					continue outermost;//强制跳出内层循环继续外层循环
+				}
+				num++;
+			}
+		}
+		alert(num);
+	}
+</script>
+	</head>
+
+	<body>
+		This is my HTML page.
+		<br>
+	</body>
+</html>
