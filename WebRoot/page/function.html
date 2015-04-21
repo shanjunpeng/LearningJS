@@ -7,14 +7,36 @@
 	<script type="text/javascript">
 		window.onload=function(){
 			testArguments("hello",2,true);
+			
+			var num = 20;
+			var result = addTen(num);
+			alert(num);//没有变化
+			alert(result);
+				
+			var obj = new Object();
+			setName(obj);
+			alert(obj.name);
+			
+			
 		}
 		
-		//ECMAScript中参数传递的都是值，不可能通过引用传递参数
+		
 		function testArguments(){
 			alert(arguments[0]+","+arguments[1]+","+arguments[2]+","+arguments[3]);
 		}
-	
-	
+		
+		//ECMAScript中参数传递的都是值，不可能通过引用传递参数
+		function addTen(num){
+			num+=10;
+			return num;
+		}
+		
+		function setName(obj){
+			obj.name="sjp";
+			obj = new Object();//此时这个变量引用的是一个局部对象了，原始的引用仍然保持没变
+			obj.name="xuxu";
+		}
+		
 	
 	</script>
   </head>

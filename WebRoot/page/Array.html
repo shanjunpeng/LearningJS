@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Array.html</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	
+  </head>
+  
+  <body>
+    <script type="text/javascript">
+		var arr = new Array();
+		document.writeln(arr.length);
+		var arr2 = new Array(20);//创建指定长度的数组
+		document.writeln(arr2.length);
+		var colors = new Array("red","blue","yellow");
+		var names = [];//空数组
+		var names2 = ["sjp","xuxu"];
+		document.writeln("<br>");
+		//数组的length是可调的，可以用来移除元素和增加元素
+		document.writeln(colors[2]);
+		colors.length=2;
+		document.writeln(colors[2]);
+		colors[colors.length]="black";
+		document.writeln(colors instanceof Array);
+		//alert(Array.isArray(colors));
+		document.writeln("<br>");
+		document.writeln(colors.toString());
+		document.writeln(colors.valueOf());
+		document.writeln(colors);
+		document.writeln("<br>");
+		//数组的方法
+		document.writeln(colors.join());
+		document.writeln(colors.join("#"));
+		
+	</script>
+  </body>
+</html>
