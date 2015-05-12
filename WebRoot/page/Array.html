@@ -92,8 +92,30 @@
 		var mytags4 = mytags2.slice(1,4);
 		document.writeln(mytags4);
 		document.writeln("<br>");
-			
-		
+
+		//splice方法 ,会影响原数组
+		document.writeln("<br>");
+		var testSplice = ["aa","bb","cc","dd"];
+		var removed = testSplice.splice(0,1);
+		document.writeln(testSplice);
+		document.writeln("<br>");
+		document.writeln(removed);	
+		document.writeln("<br>");
+
+		testSplice.splice(1,0,"java","js");
+		document.writeln(testSplice);
+		document.writeln("<br>");
+
+		removed = testSplice.splice(1,1,"haha","hehe");
+		document.writeln(testSplice);
+		document.writeln("<br>");
+		document.writeln(removed);	
+
+		//indexOf   lastIndexOf
+		document.writeln("<br>");
+		document.writeln(testSplice.indexOf("haha123"));
+		document.writeln(testSplice.indexOf("haha"));
+		document.writeln(testSplice.lastIndexOf("hehe"));
 	</script>
   </body>
 </html>

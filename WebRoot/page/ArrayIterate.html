@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>ArrayIterate.html</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	
+  </head>
+  
+  <body>
+    <script type="text/javascript">
+		//every() 对数组中每一项运行指定函数，如果该函数对每一项都返回true，则返回true
+		//some()  对数组中每一项运行指定函数，如果对该函数中任意一项返回true，则返回true
+		//filter() 对数组中每一项运行指定函数，返回该函数会返回true的项组成的数组
+		//forEach() 对数组中每一项运行指定函数，没有返回值
+		//map() 对数组中每一项运行指定函数，返回每次调用函数返回结果组成的数组
+		var nums = [1,2,3,4,5,4,3,2,1];
+		var everyResult = nums.every(function(item,index,array){
+			return item>2;
+			});
+		document.writeln(everyResult);
+		document.writeln("<br>");
+		var someResult = nums.some(function(item,index,array){
+			return item>2;
+			});
+		document.writeln(someResult);
+		document.writeln("<br>");
+		var filterResult = nums.filter(function(item,index,array){
+			return item>2;
+			});
+		document.writeln(filterResult);
+		document.writeln("<br>");
+		var mapResult = nums.map(function(item,index,array){
+			return item*2;
+			});
+		document.writeln(mapResult);
+		document.writeln("<br>");
+		var nums2 = new Array();
+		nums.forEach(function(item,index,array){
+			nums2.push(item+1);
+			});
+		document.writeln(nums2);
+		document.writeln("<br>");
+
+		//reduce() 
+		//reduceRight()
+		var values=[1,2,3,4,5];
+		var sum = values.reduce(function(prev,cur,index,array){
+			return prev+cur; //函数返回的值会作为第一个参数自动传给下一项
+			});
+		document.writeln(sum);
+		document.writeln("<br>");
+
+		//reduceRight与reduce遍历的方向相反
+		sum = values.reduceRight(function(prev,cur,index,array){
+			return prev+cur; 
+			});
+		document.writeln(sum);
+		document.writeln("<br>");
+		
+		
+	</script>
+  </body>
+</html>

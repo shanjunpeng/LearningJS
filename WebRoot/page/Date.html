@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Date.html</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	
+  </head>
+  
+  <body>
+    <script type="text/javascript">
+		var date = new Date();
+		document.writeln(date);
+		document.writeln("<br>");
+		date = new Date("2015-4-12");
+		document.writeln(date);
+		document.writeln("<br>");
+		document.writeln(Date.parse("abc"));
+		document.writeln("<br>");
+
+		//Date.UTC()方法  参数分别是年份、基于0的月份（1月是0，二月是1）、月中的那一天（0-30）、小时数（0-23）、分钟、秒、毫秒
+		var date1 = new Date(Date.UTC(2000,0));
+		document.writeln(date1);
+		document.writeln("<br>");
+		var date2 = new Date(Date.UTC(2015,4,11,16,30,23));
+		document.writeln(Date.UTC(2015,4,11,16,30,23));//毫秒数
+		document.writeln(date2);
+		
+		document.writeln("<br>");
+		//Date构造函数会模仿Date.UTC(),但是日期和时间基于本地时区创建
+		var date3 = new Date(2015,4,11,16,30,23);
+		document.writeln(date3);
+		document.writeln("<br>");
+
+		var start = Date.now();//可以返回当前时间毫秒数
+		document.writeln(start);
+		var end = +new Date();//在不支持Date.now()的浏览器中使用+操作符把Date对象转换为字符串也可以达到同样效果
+		document.writeln(end);
+		document.writeln("<br>");
+		
+		//toLocaleString按照浏览器设置的地区返回相应格式
+		document.writeln(date2.toLocaleString());
+		//valueOf返回毫秒数
+		document.writeln(date2.valueOf());
+		document.writeln(date2.getTime());//同valueOf
+		
+		document.writeln("<br>==日期格式化方法====<br>");
+		document.writeln(date3.toDateString());
+		
+		document.writeln(date3.toTimeString());
+		document.writeln("<br>");
+		document.writeln(date3.toLocaleDateString());
+		
+		document.writeln(date3.toLocaleTimeString());
+		document.writeln("<br>");
+		document.writeln(date3.toUTCString());
+
+		document.writeln("<br>==日期其他方法====<br>");
+		document.writeln(date3.getFullYear());
+		document.writeln(date3.getMonth());
+		document.writeln(date3.getDate());
+		document.writeln(date3.getDay());
+		document.writeln(date3.getHours());
+		document.writeln(date3.getMinutes());
+		document.writeln(date3.getSeconds());
+		document.writeln(date3.getMilliseconds());
+		//还有相应的set方法
+		
+	</script>
+  </body>
+</html>

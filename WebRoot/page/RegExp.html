@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>RegExp.html</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	
+  </head>
+  
+  <body>
+    <script type="text/javascript">
+		
+		//正则表达式
+		//语法 var exp = / pattern / flags
+		//flags:  
+		//g:全局(global)模式
+		//i:不区分大小写(case-insensitive)
+		//m:多行模式(multiline)
+		
+		var p1 = /at/g;
+
+		//使用构造函数
+		var p2 = new RegExp("at","g");
+		
+		
+		//所有元字符必须转义
+		//  ()[]{}\^$|?*+.
+		
+		//RegExp实例属性
+		var p3 = /\[bc\]at/i;
+		document.writeln(p3.global);
+		document.writeln(p3.ignoreCase);
+		document.writeln(p3.multiline);
+		document.writeln(p3.lastIndex);//整数，下一个匹配项的位置
+		document.writeln(p3.source);//正则表达式的字符串表示
+
+		//RegExp实例方法
+		document.writeln("<br>");
+		var text="mom and dad and baby";
+		var pattern = /mom( and dad( and baby)?)?/gi
+		var matches = pattern.exec(text);
+		document.writeln(matches.length);
+		document.writeln("<br>");
+		document.writeln(matches.index);
+		document.writeln("<br>");
+		document.writeln(matches.input);
+		document.writeln("<br>");
+		document.writeln(matches[0]);
+		document.writeln("<br>");
+		document.writeln(matches[1]);
+		document.writeln("<br>");
+		document.writeln(matches[2]);
+		document.writeln("<br>");
+		
+	</script>
+  </body>
+</html>
