@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>FunctionClass.html</title>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<script type="text/javascript">
+			function sum(num1,num2) {
+				return num1+num2;
+			}
+		
+			var sum2 = function() {
+				return arguments[0]+arguments[1];
+			};
+		
+			var sum3 = new Function("num1", "num2", "return num1+num2");//not recommend
+
+			//函数可以当作值来使用，可以当作另一个函数的参数
+			function callSomeFunction(someFunction, someArguments) {
+				return someFunction(someArguments);
+			}
+		
+			function add10(num) {
+				return num + 10;
+			}
+		
+			var result = callSomeFunction(add10, 10);
+			//alert(result);
+
+			//可以从一个函数中返回另一个函数
+			function createComparisonFunction(propertyName){
+				return function(object1,object2){
+					var val1 = object1[propertyName];
+					var val2 = object2[propertyName];
+					return val1-val2;
+				}
+			}
+
+			var data = [{name:"sjp",age:25},{name:"xuxu",age:22}];
+			data.sort(createComparisonFunction("name"));
+			document.writeln(data[0].name);
+			data.sort(createComparisonFunction("age"));
+			document.writeln(data[0].name);
+
+			//函数内部属性
+			
+			//arguments
+			//arguments.callee是一个指针，指向拥有这个arguments对象的函数
+			function factorial(num){
+				if(num<=1){
+					return 1;
+				}
+				return num * arguments.callee(num-1);
+			}
+			document.writeln(factorial(5));
+
+			//this
+			window.color="red";
+			var o = {color:"blue"};
+			function sayColor(){
+				alert(this.color);
+			}
+			//sayColor();
+			o.sayColor=sayColor;
+			//o.sayColor();
+
+
+			//caller 调用当前函数的函数的引用
+			function outer(){
+				inner();
+			}
+			function inner(){
+				alert(arguments.callee.caller);
+			}
+			//outer();
+
+			//函数的属性
+			//length表示函数希望接收的命名参数的个数
+			function sayName(name){
+			}
+			document.writeln("<br>"+sayName.length);//1
+			//prototype
+
+
+			
+			//apply() & call()
+			//这两个都是用来在特定的作用域中调用函数
+			function callSum(num1,num2){
+				return sum.apply(this,arguments);
+			}
+			function callSum2(num1,num2){
+				return sum.apply(this,[num1,num2])
+			}
+			document.writeln("<br>"+callSum(10,5));
+			document.writeln("<br>"+callSum(10,5));
+
+			//在使用call方法时，传递给函数的参数必须逐个列举出来
+			function callSum3(num1,num2){
+				return sum.call(this,num1,num2);
+			}
+
+			//apply()和call()可以扩充函数赖以运行的作用域
+			//sayColor.call(this);
+			//sayColor.call(window);
+			//sayColor.call(o);
+
+			//bind()该方法会创建一个函数的实例，其this值会被绑定到传给bind()函数的值
+			var objectSayColor = sayColor.bind(o);
+			objectSayColor();
+		</script>
+	</head>
+
+	<body>
+
+	</body>
+</html>
