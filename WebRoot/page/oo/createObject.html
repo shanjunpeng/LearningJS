@@ -1,0 +1,102 @@
+<html>
+	<body>
+		<script type="text/javascript">
+	//工厂模式	
+	function createPerson(name, age, job) {
+		var o = new Object();
+		o.name = name;
+		o.age = age;
+		o.job = job;
+		o.sayName = function() {
+			alert(this.name);
+		};
+		return o;
+	}
+	var person1 = createPerson("sjp", 25, "javaer");
+
+	//构造函数模式
+	function Person(name, age, job) {
+		this.name = name;
+		this.age = age;
+		this.job = job;
+		/*
+		this.sayName = function(){
+			alert(this.name);
+		};
+		 */
+		this.sayName = sayName;//把函数放到外部，防止每创建一个对象就创建一个sayName函数的对象
+	}
+
+	function sayName() {
+		alert(this.name);
+	}
+
+	var person2 = new Person("sjp", 25, "javaer");
+	//alert(person2.constructor==Person);  //true
+	//alert(person2 instanceof Person); //true
+
+	//原型模式
+	function Person() {
+	}
+	Person.prototype.name = "sjp";
+	Person.prototype.age = 25;
+	Person.prototype.job = "javaer";
+	Person.prototype.sayName = function() {
+		alert(this.name);
+	};
+	//原型字面量写法
+	Person.prototype = {
+		//constructor : Person,
+		name : "sjp",
+		age : 25,
+		job : "javaer",
+		sayName : function() {
+			return this.name;
+		}
+	};
+
+	var person3 = new Person();
+	var person4 = new Person();
+	//alert(person3.sayName==person4.sayName);  //true
+
+	//alert(Person.prototype.isPrototypeOf(person3));
+	//alert(Object.getPrototypeOf(person3)==Person.prototype);
+
+	person3.name = "xuxu";
+	//hasOwnProperty()方法可以检测属性是存在于实例中还是存在于原型中
+	//alert(person3.hasOwnProperty("name"));//true
+	delete person3.name;//使用delete操作符可以删除实例属性
+	//alert(person3.name);
+	//alert(person4.name);
+	//alert(person4.hasOwnProperty("name"));//false
+
+	//确定是否包含某原型属性
+	function havePrototypeProperty(object, name) {
+		return !Object.hasOwnProperty(name) && (name in object);
+	}
+
+	//in
+	for (property in person4) {
+		//alert(property+":"+person4[property]);
+	}
+	//Object.keys()接收一个对象作为参数，返回一个包含所有可枚举属性的字符串数组
+	var keys = Object.keys(Person.prototype);
+	//alert(keys);
+	person4.hobby = "basketball";
+	keys = Object.keys(person4);
+	//alert(keys);
+
+	//Object.getOwnPropertyNames()得到所有实例属性,无论是否可枚举
+	keys = Object.getOwnPropertyNames(Person.prototype);
+	//alert(keys);//包含constructor属性
+	
+	//通过原生对象的模型，不仅可以取得默认方法的引用，还可以定义新方法
+	String.prototype.startWith = function(text){
+		return this.indexOf(text)==0;
+	}	
+	var msg = "hello world";
+	alert(msg.startWith("hello"));
+	
+</script>
+	</body>
+</html>
