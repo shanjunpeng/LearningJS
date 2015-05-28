@@ -89,14 +89,73 @@
 	//Object.getOwnPropertyNames()得到所有实例属性,无论是否可枚举
 	keys = Object.getOwnPropertyNames(Person.prototype);
 	//alert(keys);//包含constructor属性
-	
+
 	//通过原生对象的模型，不仅可以取得默认方法的引用，还可以定义新方法
-	String.prototype.startWith = function(text){
-		return this.indexOf(text)==0;
-	}	
+	String.prototype.startWith = function(text) {
+		return this.indexOf(text) == 0;
+	}
 	var msg = "hello world";
-	alert(msg.startWith("hello"));
+	//alert(msg.startWith("hello"));
+
+	//============组合使用构造函数模式和原型模式=============================
+	//使用最广泛，认同度最高的创建自定义类型的方式：
+	function Person(name, age, job) {
+		this.name = name;
+		this.age = age;
+		this.job = job;
+		this.friends = [ "jim", "tom" ];
+	}
+	Person.prototype = {
+		constructor : Person,
+		sayName : function() {
+			alert(this.name);
+		}
+	}
+	//============动态原型模式=======================================================
+	function Person(name, age, job) {
+		this.name = name;
+		this.age = age;
+		this.job = job;
+		if (typeof this.sayName != "function") {
+			Person.prototype.sayName = function() {
+				alert(this.name);
+			}
+		}
+	}
+	//============寄生构造函数模式=====================================
+	function Person(name, age, job) {
+		Object
+		o = new Object();
+		o.name = name;
+		o.age = age;
+		o.job = job;
+		o.sayName = function() {
+			alert(this.name);
+		};
+		return o;
+	}
+	function SpecialArray(){
+		var arr = new Array();
+		arr.push.apply(arr,arguments);
+		arr.joinString = function(){
+			return this.join("|");
+		};
+		return arr;
+	}
+	var colors = new SpecialArray("red","blue");
+	//alert(colors.joinString());
 	
+	//==============稳妥构造函数模式================================
+	function Person(name, age, job) {
+		Object
+		o = new Object();
+		o.name = name;
+		//添加私有变量和函数
+		o.sayName = function() {
+			alert(name);
+		};
+		return o;
+	}
 </script>
 	</body>
 </html>
