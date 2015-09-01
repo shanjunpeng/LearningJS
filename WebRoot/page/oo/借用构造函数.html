@@ -1,0 +1,20 @@
+<html>
+	<body>
+		<script type="text/javascript">
+			function SuperType(name){
+				this.colors = ["blue","red","yellow"];
+				this.name=name;
+			}
+			function SubType(){
+				//继承了SuperType
+				SuperType.call(this,"sjp");
+				this.age=29;
+			}
+			
+			var instance1 = new SubType();
+			//alert(instance1.colors);
+			alert(instance1.name);
+			
+		</script>
+	</body>
+</html>

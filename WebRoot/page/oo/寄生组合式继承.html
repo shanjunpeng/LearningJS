@@ -1,0 +1,54 @@
+<html>
+	<body>
+		<script type="text/javascript">
+	function createAnother(original){
+		var clone = Object.create(original);
+		clone.sayHi = function(){
+			alert("hi");
+		};
+		return clone;
+	}
+	
+	
+	function inheritPrototype(subType,superType){
+		var prototype = Object.create(superType.prototype);//创建对象
+		prototype.constructor = subType;//增强对象
+		subType.prototype = prototype;//指定对象
+	}
+	
+	
+	function SuperType(name) {
+		this.colors = [ "blue", "red", "yellow" ];
+		this.name = name;
+	}
+	SuperType.prototype = {
+	   flag:true,
+	   sayName:function(){
+	   	   alert(this.name);
+	   }
+	};
+	function SubType(name, age) {
+		//继承属性
+		SuperType.call(this, name);
+		this.age = age;
+	}
+	//继承prototype
+	inheritPrototype(SubType,SuperType);
+	SubType.prototype.sayAge = function(){
+		alert(this.age);
+	};
+	
+	var supertype = new SuperType("Tom");
+	var subtype = new SubType("sjp",25);
+	var subtype2 = new SubType("xuxu",22);
+	//继承了方法
+	subtype.sayName();//sjp
+	//继承了属性
+	alert(subtype.flag);//true
+	//子类实例属性的修改不影响其他实例
+	subtype.colors.push("black");
+	alert(subtype2.colors);//blue,red,yellow
+	
+</script>
+	</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>recursion.html</title>
+
+  </head>
+
+  <body>
+    <script type="text/javascript">
+    	function factorial(num){
+    		if(num<=1){
+    			return 1;
+    		}else{
+          return num * arguments.callee(num-1);
+        }
+
+    	}
+      alert(factorial(5));//120
+    </script>
+
+
+  </body>
+</html>

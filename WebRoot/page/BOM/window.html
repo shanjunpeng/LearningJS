@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>window</title>
+</head>
+<body>
+  <script type="text/javascript">
+    var age=25;
+    function sayAge(){
+      alert(this.age);
+    }
+    //alert(window.age);
+    //window.sayAge();
+    //sayAge();
+
+    //窗口位置
+    var leftPos = (typeof window.screenLeft=="number")?window.screenLeft:window.screenX;
+    var topPos = (typeof window.screenTop=="number")?window.screenTop:window.screenY;
+    //alert(leftPos+","+topPos);
+
+    //取得页面视口大小
+    var pageWidth = window.innerWidth,
+        pageHeight = window.innerHeight;
+    if(typeof pageWidth!="number"){
+        if(document.compatMode=="CSS1Compat"){
+          pageWidth=document.documentElement.clientWidth;
+          pageHeight=document.documentElement.clientHeight;
+        }else {
+          pageWidth=document.body.clientWidth;
+          pageHeight=document.body.clientHeight;
+        }
+    }
+    //alert(pageWidth+","+pageHeight);
+
+  </script>
+  <button onclick="">click</button>
+</body>
+</html>

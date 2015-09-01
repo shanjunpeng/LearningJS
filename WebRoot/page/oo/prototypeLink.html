@@ -3,6 +3,7 @@
 		<script type="text/javascript">
 			function SuperType(){
 				this.property=true;
+				this.colors = ["blue","red","yellow"];
 			}
 			SuperType.prototype.getSuperValue=function(){
 				return this.property;
@@ -19,9 +20,23 @@
 			
 			var instance = new SubType();
 			//alert(instance.getSuperValue());
-			alert(instance instanceof SubType);
-			alert(instance instanceof SuperType);
-			alert(instance instanceof Object);
+			//alert(instance instanceof SubType);
+			//alert(instance instanceof SuperType);
+			//alert(instance instanceof Object);
+			
+			//重写父类方法
+			SubType.prototype.getSuperValue = function(){
+				return false;
+			}
+			//alert(instance.getSuperValue());
+			var superType = new SuperType();
+			//alert(superType.getSuperValue());
+			
+			instance.colors.push("black");
+			var instance2 = new SubType();
+			//子类实例引用属性的修改会影响其他实例
+			alert(instance.colors);
+			alert(instance2.colors);
 			
 		</script>
 	</body>

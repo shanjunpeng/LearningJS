@@ -1,0 +1,30 @@
+<html>
+	<body>
+		<script type="text/javascript">
+	function object(o) {
+		function F() {
+		}
+		F.prototype = o;
+		return new F();
+	}
+
+	var person = {
+		name : "sjp",
+		friends : [ "wangheng", "liuwei" ]
+	};
+
+	var anotherPerson = object(person);
+	anotherPerson.name = "xuxu";
+	anotherPerson.friends.push("somebody");
+
+	//alert(person.friends);
+
+	var person2 = Object.create(person, {
+		name : {
+			value : "Tom"
+		}
+	});
+	alert(person2.name);
+</script>
+	</body>
+</html>
